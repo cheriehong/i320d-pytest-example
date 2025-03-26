@@ -1,7 +1,6 @@
 import pytest
 
 
-  ...
 def fix_phone_num(phone_num_to_fix):
   
   # given "5125558823". Split the parts, then recombine and return
@@ -22,10 +21,18 @@ def test_fix_phone_num():
 
 # this test should fail
 def test_unformatted_num(): 
-    assert fix_phone_num("555-442-98761") == '(555) 442 98761'
+    assert fix_phone_num("555-442-98761") == '(555) 442 9876'
     assert fix_phone_num("(321) 654 3333") == '(321) 654 3333'
-
-# def test_raises_error_on_short_params(): 
-#     # Now check that a too short string gives a ValueError
-#   with pytest.raises(ValueError):
-#     fix_phone_num("51")
+    
+ 
+# Now check that a too short string gives a ValueError 
+def test_raises_error_on_short_params(): 
+    with pytest.raises(ValueError):
+        fix_phone_num("51")
+        
+        
+def test_check_is_digit(): 
+    with pytest.raises(ValueError):
+        fix_phone_num("hello")
+        
+    
